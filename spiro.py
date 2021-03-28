@@ -5,6 +5,14 @@
 # Programmer
 
 import turtle
+import math
+import numpy as np
+from fractions import gcd
+import sys
+import random
+import argparse
+from PIL import Image
+from datetime import datetime
 
 
 # Class for drawing a Spirograph
@@ -53,3 +61,21 @@ def setparams(self, xc, yc, col, R, r, l):
 
     # store the current angle
     self.a = 0
+
+
+# set restart method for the drawing
+def restart(self):
+    # set the flag
+    self.drawingComplete = False
+
+    # show the turtle
+    self.t.showturtle()
+
+    # go to the first point to begin plot
+    self.t.up()
+    R, k, l = self.R, self.k, self.l
+    a = 0.0
+    x = self.R*((1-k)*math.cos(a) + l*k*math.cos((1-k)*a/k))
+    y = self.R*((1-k)*math.sin(a) - 1*k*math.sin((1-k)*a/k))
+    self.t.setpos(self.xc + x, self.yc + y)
+    self.t.down()
