@@ -115,6 +115,10 @@ class Spiro:
             # drawing is done, so hide turtle cursor
             self.t.hideturtle()
 
+    # clear everything
+    def clear(self):
+        self.t.clear()
+
 
 # class for animating the spirographs
 class SpiroAnimator:
