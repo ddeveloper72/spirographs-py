@@ -91,7 +91,7 @@ class Spiro:
         self.t.hideturtle()
 
     # update the drawing by one step crating animatin effect
-    def step(self):
+    def update(self):
         # skip remaining steps if complete
         if self.drawingComplete:
             return
