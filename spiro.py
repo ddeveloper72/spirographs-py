@@ -92,3 +92,29 @@ def draw(self):
         self.t.setpos(self.xc + x, self.yc + y)
     # drawing is done so hide the turtle cursor
     self.t.hideturtle()
+
+
+# update the drawing by one step crating animatin effect
+def step(self):
+    # skip remaining steps if complete
+    if self.drawingComplete:
+        return
+
+    # increment the angle
+    self.a += self.step
+
+    # draw a step
+    R, k, l = self.R, self.k, self.l
+
+    # set angle
+    a = math.radians(self.a)
+    x = R*((1-k)*math.cos(a) + l*k*math.cos((1-k)*a/k))
+    y = R*((1-k)*math.sin(a) - 1*k*math.sin((1-k)*a/k))
+    self.t.setpos(self.xc + x, self.yc + y)
+
+    # if drawing is complete, set the fag
+    if self.step >= 360*self.nRot:
+        self.drawingComplete = True
+
+        # drawing is done, so hide turtle cursor
+        self.t.hideturtle()
