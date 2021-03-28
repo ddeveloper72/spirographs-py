@@ -240,3 +240,22 @@ parser.add_argument('--sparms', nargs=3, dest='sparms', required=False,
 
 # parse args
 args = parser.parse_args()
+
+# set width of the spiro drawing window 80% of the screen width
+turtle.setup(width=0.8)
+
+# set shape of the turtle cursor
+turtle.shape('turtle')
+
+# set the title to the Spirographs!
+turtle.title("Spirographs")
+
+# add the key handler to save your drawings
+turtle.onkey(saveDrawing, "s")
+
+# start listening
+turtle.listen()
+
+#hide the main turtle cursor
+turtle.hideturtle()
+
