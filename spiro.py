@@ -176,3 +176,25 @@ def restart(self):
 
         # restart drawing
         spiro.restart()
+
+
+# update method
+def update(self):
+    # Update all spiros
+    numComplete = 0
+    for spiro in self.spiros:
+
+        # update
+        spiro.update()
+
+        # count completed spiros
+        if spiro.drawingComplete:
+            numComplete += 1
+
+    # restart if all spiros are complete
+    if numComplete == len(self.spiros):
+        self.restart()
+
+    # call the timer
+    turtle.ontimer(self.update, self.deltaT)
+
