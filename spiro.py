@@ -230,3 +230,13 @@ def saveDrawing():
 
     # show the turtle cursor
     turtle.showturtle()
+
+
+parser = argparse.ArgumentParser(description=descStr)
+
+# add expected arguments
+parser.add_argument('--sparms', nargs=3, dest='sparms', required=False, 
+                    help="The three arguments in sparms: R, r, l.")
+
+# parse args
+args = parser.parse_args()
