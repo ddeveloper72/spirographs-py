@@ -7,7 +7,7 @@
 import turtle
 import math
 import numpy as np
-from fractions import gcd
+from math import gcd
 import sys
 import random
 import argparse
@@ -73,7 +73,7 @@ class Spiro:
         self.t.up()
         R, k, l = self.R, self.k, self.l
         a = 0.0
-        x = self.R*((1-k)*math.cos(a) + l*k*math.cos((1-k)*a/k))
+        x = self.R*((1-k)*math.cos(a) + 1*k*math.cos((1-k)*a/k))
         y = self.R*((1-k)*math.sin(a) - 1*k*math.sin((1-k)*a/k))
         self.t.setpos(self.xc + x, self.yc + y)
         self.t.down()
@@ -84,7 +84,7 @@ class Spiro:
         R, k, l, = self.R, self.k, self.l
         for i in range(0, 360*self.nRot + 1, self.step):
             a = math.radians(i)
-            x = R*((1-k)*math.cos(a) + l*k*math.cos((1-k)*a/k))
+            x = R*((1-k)*math.cos(a) + 1*k*math.cos((1-k)*a/k))
             y = R*((1-k)*math.sin(a) - 1*k*math.sin((1-k)*a/k))
             self.t.setpos(self.xc + x, self.yc + y)
         # drawing is done so hide the turtle cursor
@@ -104,7 +104,7 @@ class Spiro:
 
         # set angle
         a = math.radians(self.a)
-        x = R*((1-k)*math.cos(a) + l*k*math.cos((1-k)*a/k))
+        x = R*((1-k)*math.cos(a) + 1*k*math.cos((1-k)*a/k))
         y = R*((1-k)*math.sin(a) - 1*k*math.sin((1-k)*a/k))
         self.t.setpos(self.xc + x, self.yc + y)
 
@@ -253,8 +253,8 @@ def main():
     # parse args
     args = parser.parse_args()
 
-    # set width of the spiro drawing window 80% of the screen width
-    turtle.setup(width=0.8)
+    # set width of the spiro drawing window 60% of the screen width
+    turtle.setup(width=0.6)
 
     # set shape of the turtle cursor
     turtle.shape('turtle')
