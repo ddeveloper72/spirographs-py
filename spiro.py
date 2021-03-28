@@ -118,3 +118,29 @@ def step(self):
 
         # drawing is done, so hide turtle cursor
         self.t.hideturtle()
+
+
+# class for animating the spirographs
+class SpiroAnimator:
+    # constructor
+    def __init__(self, N):
+        # set the timer value in millisecords
+        self.deltaT = 10
+
+        # get the window dimensions
+        self.width = turtle.window_width()
+        self.height = turtle.window_height()
+
+        # crate spiro objects
+        self.spiros = []
+        for i in range(N):
+
+            # generate random parameters
+            rparams = self.genRandomeParams()
+
+            # set the spiro parameters
+            spiro = Spiro(*rparams)
+            self.spiros.append(spiro)
+
+        # call timer
+        turtle.ontimer(self.update, self.deltaT)
