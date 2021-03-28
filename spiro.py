@@ -232,6 +232,8 @@ def saveDrawing():
     turtle.showturtle()
 
 
+
+
 parser = argparse.ArgumentParser(description=descStr)
 
 # add expected arguments
@@ -256,6 +258,27 @@ turtle.onkey(saveDrawing, "s")
 # start listening
 turtle.listen()
 
-#hide the main turtle cursor
+# hide the main turtle cursor
 turtle.hideturtle()
 
+
+# check for any arguments sent to --sparams and draw the Spirograph
+if args.sparms:
+    params = [float(x) for x in args.sparams]
+
+    # draw the Spirograph with the given parameters
+    col = (0.0, 0.0, 0.0)
+    spiro = Spiro(0,0, col, *params)
+    spiro.draw()
+else:
+    # create the animator object
+    spiroAnim = SpiroAnimator(4)
+
+    # add a keyhandler to toggle the turtle cursor
+    turtle.onkey(spiroAnim.toggleTurtles, "t")
+
+    # add a keyhandler to restart the animation
+    turtle.onkey(spiroAnim.restart, "space")
+
+# start the turtle main loop
+turtle.mainloop()
