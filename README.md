@@ -29,3 +29,7 @@ for i in range(0, 365, 5):
 Image showing Draw Circle output:
 
 ![Image showing circle](https://github.com/ddeveloper72/spirographs-py/blob/main/images/drawcircle.png "Image showing Draw Circle output")
+
+Image showing the Spirograph output:
+
+![Image showing Spirographs](https://github.com/ddeveloper72/spirographs-py/blob/main/images/spiro-28Mar2021-234220.png "Image showing Turtle Spirographs")
