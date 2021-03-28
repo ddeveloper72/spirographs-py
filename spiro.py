@@ -39,85 +39,81 @@ class Spiro:
         # initialize the drawing
         self.restart()
 
+    # set the parameters
+    def setparams(self, xc, yc, col, R, r, l):
+        # the Spirograph parameters
+        self.xc = xc
+        self.yc = yc
+        self.R = int(R)
+        self.r = int(r)
+        self.l = l
 
-# set the parameters
-def setparams(self, xc, yc, col, R, r, l):
-    # the Spirograph parameters
-    self.xc = xc
-    self.yc = yc
-    self.R = int(R)
-    self.r = int(r)
-    self.l = l
+        # reduce r/R to its smallest form by dividing with the GCD
+        gcdVal = gcd(self.r, self.R)
+        self.nRot = self.r//gcdVal
 
-    # reduce r/R to its smallest form by dividing with the GCD
-    gcdVal = gcd(self.r, self.R)
-    self.nRot = self.r//gcdVal
+        # get ratio of radii
+        self.k = r/float(R)
 
-    # get ratio of radii
-    self.k = r/float(R)
+        # set color
+        self.t.color(*col)
 
-    # set color
-    self.t.color(*col)
+        # store the current angle
+        self.a = 0
 
-    # store the current angle
-    self.a = 0
+    # set restart method for the drawing
+    def restart(self):
+        # set the flag
+        self.drawingComplete = False
 
+        # show the turtle
+        self.t.showturtle()
 
-# set restart method for the drawing
-def restart(self):
-    # set the flag
-    self.drawingComplete = False
+        # go to the first point to begin plot
+        self.t.up()
+        R, k, l = self.R, self.k, self.l
+        a = 0.0
+        x = self.R*((1-k)*math.cos(a) + l*k*math.cos((1-k)*a/k))
+        y = self.R*((1-k)*math.sin(a) - 1*k*math.sin((1-k)*a/k))
+        self.t.setpos(self.xc + x, self.yc + y)
+        self.t.down()
 
-    # show the turtle
-    self.t.showturtle()
+    # Specify the draw method
+    def draw(self):
+        # draw the remaining points
+        R, k, l, = self.R, self.k, self.l
+        for i in range(0, 360*self.nRot + 1, self.step):
+            a = math.radians(i)
+            x = R*((1-k)*math.cos(a) + l*k*math.cos((1-k)*a/k))
+            y = R*((1-k)*math.sin(a) - 1*k*math.sin((1-k)*a/k))
+            self.t.setpos(self.xc + x, self.yc + y)
+        # drawing is done so hide the turtle cursor
+        self.t.hideturtle()
 
-    # go to the first point to begin plot
-    self.t.up()
-    R, k, l = self.R, self.k, self.l
-    a = 0.0
-    x = self.R*((1-k)*math.cos(a) + l*k*math.cos((1-k)*a/k))
-    y = self.R*((1-k)*math.sin(a) - 1*k*math.sin((1-k)*a/k))
-    self.t.setpos(self.xc + x, self.yc + y)
-    self.t.down()
+    # update the drawing by one step crating animatin effect
+    def step(self):
+        # skip remaining steps if complete
+        if self.drawingComplete:
+            return
 
+        # increment the angle
+        self.a += self.step
 
-# Specify the draw method
-def draw(self):
-    # draw the remaining points
-    R, k, l, = self.R, self.k, self.l
-    for i in range(0, 360*self.nRot + 1, self.step):
-        a = math.radians(i)
+        # draw a step
+        R, k, l = self.R, self.k, self.l
+
+        # set angle
+        a = math.radians(self.a)
         x = R*((1-k)*math.cos(a) + l*k*math.cos((1-k)*a/k))
         y = R*((1-k)*math.sin(a) - 1*k*math.sin((1-k)*a/k))
         self.t.setpos(self.xc + x, self.yc + y)
-    # drawing is done so hide the turtle cursor
-    self.t.hideturtle()
 
+        # if drawing is complete, set the fag
+        if self.step >= 360*self.nRot:
+            self.drawingComplete = True
 
-# update the drawing by one step crating animatin effect
-def step(self):
-    # skip remaining steps if complete
-    if self.drawingComplete:
-        return
-
-    # increment the angle
-    self.a += self.step
-
-    # draw a step
-    R, k, l = self.R, self.k, self.l
-
-    # set angle
-    a = math.radians(self.a)
-    x = R*((1-k)*math.cos(a) + l*k*math.cos((1-k)*a/k))
-    y = R*((1-k)*math.sin(a) - 1*k*math.sin((1-k)*a/k))
-    self.t.setpos(self.xc + x, self.yc + y)
-
-    # if drawing is complete, set the fag
-    if self.step >= 360*self.nRot:
-        self.drawingComplete = True
-
-        # drawing is done, so hide turtle cursor
-        self.t.hideturtle()
+            # drawing is done, so hide turtle cursor
+            self.t.hideturtle()
 
 
 # class for animating the spirographs
