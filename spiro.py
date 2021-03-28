@@ -145,67 +145,63 @@ class SpiroAnimator:
         # call timer
         turtle.ontimer(self.update, self.deltaT)
 
+    # restart the spiro drawing
+    def restart(self):
+        for spiro in self.spiros:
 
-# generate random parameters
-def genRandomParams(self):
-    width, height = self.width, self.height
-    R = random.randint(50, min(width, height)//2)
-    r = random.randint(10, 9*R//10)
-    l = random.uniform(0.1, 0.9)
-    xc = random.randint(-width//2, width//2)
-    yc = random.randint(-height//2, height//2)
-    col = (random.random(),
-           random.random(),
-           random.random()
-           )
-    return(xc, yc, col, R, r, l)
+            # clear
+            spiro.clear()
 
+            # generate random parameters
+            rparams = self.genRandomParams()
 
-# restart the spiro drawing
-def restart(self):
-    for spiro in self.spiros:
+            # set the spiro parameters
+            spiro.setparams(*rparams)
 
-        # clear
-        spiro.clear()
+            # restart drawing
+            spiro.restart()
 
-        # generate random parameters
-        rparams = self.genRandomParams()
+    # generate random parameters
+    def genRandomParams(self):
+        width, height = self.width, self.height
+        R = random.randint(50, min(width, height)//2)
+        r = random.randint(10, 9*R//10)
+        l = random.uniform(0.1, 0.9)
+        xc = random.randint(-width//2, width//2)
+        yc = random.randint(-height//2, height//2)
+        col = (random.random(),
+               random.random(),
+               random.random()
+               )
+        return(xc, yc, col, R, r, l)
 
-        # set the spiro parameters
-        spiro.setparams(*rparams)
+    # update method
+    def update(self):
+        # Update all spiros
+        numComplete = 0
+        for spiro in self.spiros:
 
-        # restart drawing
-        spiro.restart()
+            # update
+            spiro.update()
 
+            # count completed spiros
+            if spiro.drawingComplete:
+                numComplete += 1
 
-# update method
-def update(self):
-    # Update all spiros
-    numComplete = 0
-    for spiro in self.spiros:
+        # restart if all spiros are complete
+        if numComplete == len(self.spiros):
+            self.restart()
 
-        # update
-        spiro.update()
+        # call the timer
+        turtle.ontimer(self.update, self.deltaT)
 
-        # count completed spiros
-        if spiro.drawingComplete:
-            numComplete += 1
-
-    # restart if all spiros are complete
-    if numComplete == len(self.spiros):
-        self.restart()
-
-    # call the timer
-    turtle.ontimer(self.update, self.deltaT)
-
-
-# toggle cursor
-def toggleTurtles(self):
-    for spiro in self.spiros:
-        if spiro.t.isvisible():
-            spiro.t.hideturtle()
-        else:
-            spiro.t.showturtle()
+    # toggle cursor
+    def toggleTurtles(self):
+        for spiro in self.spiros:
+            if spiro.t.isvisible():
+                spiro.t.hideturtle()
+            else:
+                spiro.t.showturtle()
 
 
 # save drawings to PNG files
