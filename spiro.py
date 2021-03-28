@@ -232,53 +232,70 @@ def saveDrawing():
     turtle.showturtle()
 
 
+# The main() function
+def main():
+    # use sys.argv if needed
+    print('generating spirograph...')
 
+    # create parser
+    descStr = """This program draws Spirographs using the turtle module.
+    When run with no arguments, this program draws random Spirographs.
 
-parser = argparse.ArgumentParser(description=descStr)
+    Terminology:
 
-# add expected arguments
-parser.add_argument('--sparms', nargs=3, dest='sparms', required=False, 
-                    help="The three arguments in sparms: R, r, l.")
+    R: radius of outer circle
+    r: radius of inner circle
+    i: ratio of hole distance to r
+    """
 
-# parse args
-args = parser.parse_args()
+    parser = argparse.ArgumentParser(description=descStr)
 
-# set width of the spiro drawing window 80% of the screen width
-turtle.setup(width=0.8)
+    # add expected arguments
+    parser.add_argument('--sparms', nargs=3, dest='sparms', required=False,
+                        help="The three arguments in sparms: R, r, l.")
 
-# set shape of the turtle cursor
-turtle.shape('turtle')
+    # parse args
+    args = parser.parse_args()
 
-# set the title to the Spirographs!
-turtle.title("Spirographs")
+    # set width of the spiro drawing window 80% of the screen width
+    turtle.setup(width=0.8)
 
-# add the key handler to save your drawings
-turtle.onkey(saveDrawing, "s")
+    # set shape of the turtle cursor
+    turtle.shape('turtle')
 
-# start listening
-turtle.listen()
+    # set the title to the Spirographs!
+    turtle.title("Spirographs")
 
-# hide the main turtle cursor
-turtle.hideturtle()
+    # add the key handler to save your drawings
+    turtle.onkey(saveDrawing, "s")
 
+    # start listening
+    turtle.listen()
 
-# check for any arguments sent to --sparams and draw the Spirograph
-if args.sparms:
-    params = [float(x) for x in args.sparams]
+    # hide the main turtle cursor
+    turtle.hideturtle()
 
-    # draw the Spirograph with the given parameters
-    col = (0.0, 0.0, 0.0)
-    spiro = Spiro(0,0, col, *params)
-    spiro.draw()
-else:
-    # create the animator object
-    spiroAnim = SpiroAnimator(4)
+    # check for any arguments sent to --sparams and draw the Spirograph
+    if args.sparms:
+        params = [float(x) for x in args.sparams]
 
-    # add a keyhandler to toggle the turtle cursor
-    turtle.onkey(spiroAnim.toggleTurtles, "t")
+        # draw the Spirograph with the given parameters
+        col = (0.0, 0.0, 0.0)
+        spiro = Spiro(0, 0, col, *params)
+        spiro.draw()
+    else:
+        # create the animator object
+        spiroAnim = SpiroAnimator(4)
 
-    # add a keyhandler to restart the animation
-    turtle.onkey(spiroAnim.restart, "space")
+        # add a keyhandler to toggle the turtle cursor
+        turtle.onkey(spiroAnim.toggleTurtles, "t")
 
-# start the turtle main loop
-turtle.mainloop()
+        # add a keyhandler to restart the animation
+        turtle.onkey(spiroAnim.restart, "space")
+
+    # start the turtle main loop
+    turtle.mainloop()
+
+# call main
+if __name__ == '__main__':
+    main()
