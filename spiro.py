@@ -136,7 +136,7 @@ class SpiroAnimator:
         for i in range(N):
 
             # generate random parameters
-            rparams = self.genRandomeParams()
+            rparams = self.genRandomParams()
 
             # set the spiro parameters
             spiro = Spiro(*rparams)
