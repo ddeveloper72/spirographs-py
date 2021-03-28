@@ -198,3 +198,11 @@ def update(self):
     # call the timer
     turtle.ontimer(self.update, self.deltaT)
 
+
+# toggle cursor
+def toggleTurtles(self):
+    for spiro in self.spiros:
+        if spiro.t.isvisible():
+            spiro.t.hideturtle()
+        else:
+            spiro.t.showturtle()
