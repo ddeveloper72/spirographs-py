@@ -30,6 +30,19 @@ Image showing Draw Circle output:
 
 ![Image showing circle](https://github.com/ddeveloper72/spirographs-py/blob/main/images/drawcircle.png "Image showing Draw Circle output")
 
+## Draw Spirographs
+
+Descriptive text to be updated here
+
+```` python
+
+for i in range(0, 360*self.nRot + 1, self.step):
+            a = math.radians(i)
+            x = R*((1-k)*math.cos(a) + l*k*math.cos((1-k)*a/k))
+            y = R*((1-k)*math.sin(a) - l*k*math.sin((1-k)*a/k))
+
+````
+
 Image showing the Spirograph output:
 
 ![Image showing Spirographs](https://github.com/ddeveloper72/spirographs-py/blob/main/images/spiro-28Mar2021-234220.png "Image showing Turtle Spirographs")
