@@ -206,3 +206,27 @@ def toggleTurtles(self):
             spiro.t.hideturtle()
         else:
             spiro.t.showturtle()
+
+
+# save drawings to PNG files
+def saveDrawing():
+    # hide the turtle cursor
+    turtle.hideturtle()
+
+    # generate unique filenames
+    dateStr = (datetime.now()).strftime("%d%b%Y-%H%M%S")
+    fileName = 'spiro-' + dateStr
+    print('saving drawing to %s.esp/png' % fileName)
+
+    # get the tkinter canvas
+    canvas = turtle.getcanvas()
+
+    # save the drawings as a post script image
+    canvas.postscript(file=fileName + '.eps')
+
+    # use the Pillow module to convert the postscript image file to PNG
+    img = Image.open(fileName + '.eps')
+    img.save(fileName + '.png', 'png')
+
+    # show the turtle cursor
+    turtle.showturtle()
