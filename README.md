@@ -26,5 +26,6 @@ for i in range(0, 365, 5):
 
 ````
 
-See fig below:
-![Image showing circle](https://github.com/ddeveloper72/spirographs-py/blob/main/images/drawcircle.png "image showing Draw Circle output")
+Image showing Draw Circle output":
+
+![Image showing circle](https://github.com/ddeveloper72/spirographs-py/blob/main/images/drawcircle.png "Image showing Draw Circle output")
