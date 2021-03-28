@@ -253,8 +253,8 @@ def main():
     # parse args
     args = parser.parse_args()
 
-    # set width of the spiro drawing window 60% of the screen width
-    turtle.setup(width=0.6)
+    # set width of the spiro drawing window 60% of the screen width, height
+    turtle.setup(width=0.6, height=0.6)
 
     # set shape of the turtle cursor
     turtle.shape('turtle')
