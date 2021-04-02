@@ -247,7 +247,7 @@ def main():
     parser = argparse.ArgumentParser(description=descStr)
 
     # add expected arguments
-    parser.add_argument('--sparams', nargs=3, dest='sparms', required=False,
+    parser.add_argument('--sparams', nargs=3, dest='sparams', required=False,
                         help="The three arguments in sparms: R, r, l.")
 
     # parse args
