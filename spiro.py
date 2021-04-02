@@ -30,7 +30,7 @@ class Spiro:
         self.step = 5
 
         # set the drawing complete flag
-        # see https://docs.python.org/3.3/library/turtle.html 
+        # see https://docs.python.org/3.3/library/turtle.html
         self.drawingComplete = False
 
         # set the paramaters from the functions below
@@ -247,7 +247,7 @@ def main():
     parser = argparse.ArgumentParser(description=descStr)
 
     # add expected arguments
-    parser.add_argument('--sparms', nargs=3, dest='sparms', required=False,
+    parser.add_argument('--sparams', nargs=3, dest='sparms', required=False,
                         help="The three arguments in sparms: R, r, l.")
 
     # parse args
@@ -272,7 +272,7 @@ def main():
     turtle.hideturtle()
 
     # check for any arguments sent to --sparams and draw the Spirograph
-    if args.sparms:
+    if args.sparams:
         params = [float(x) for x in args.sparams]
 
         # draw the Spirograph with the given parameters
