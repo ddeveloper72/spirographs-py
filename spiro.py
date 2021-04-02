@@ -18,7 +18,7 @@ from datetime import datetime
 # Class for drawing a Spirograph
 class Spiro:
     # the constructor
-    def __init__(self, xc, yc, col, R, r, l):
+    def __init__(self, xc, yc, col, R, r, L):
 
         # crate the turtle object
         self.t = turtle.Turtle()
@@ -34,19 +34,19 @@ class Spiro:
         self.drawingComplete = False
 
         # set the paramaters from the functions below
-        self.setparams(xc, yc, col, R, r, l)
+        self.setparams(xc, yc, col, R, r, L)
 
         # initialize the drawing
         self.restart()
 
     # set the parameters
-    def setparams(self, xc, yc, col, R, r, l):
+    def setparams(self, xc, yc, col, R, r, L):
         # the Spirograph parameters
         self.xc = xc
         self.yc = yc
         self.R = int(R)
         self.r = int(r)
-        self.l = l
+        self.L = L
 
         # reduce r/R to its smallest form by dividing with the GCD
         gcdVal = gcd(self.r, self.R)
@@ -71,21 +71,21 @@ class Spiro:
 
         # go to the first point to begin plot
         self.t.up()
-        R, k, l = self.R, self.k, self.l
+        R, k, L = self.R, self.k, self.L
         a = 0.0
-        x = R*((1-k)*math.cos(a) + l*k*math.cos((1-k)*a/k))
-        y = R*((1-k)*math.sin(a) - l*k*math.sin((1-k)*a/k))
+        x = R*((1-k)*math.cos(a) + L*k*math.cos((1-k)*a/k))
+        y = R*((1-k)*math.sin(a) - L*k*math.sin((1-k)*a/k))
         self.t.setpos(self.xc + x, self.yc + y)
         self.t.down()
 
     # Specify the draw method
     def draw(self):
         # draw the remaining points
-        R, k, l, = self.R, self.k, self.l
+        R, k, L, = self.R, self.k, self.L
         for i in range(0, 360*self.nRot + 1, self.step):
             a = math.radians(i)
-            x = R*((1-k)*math.cos(a) + l*k*math.cos((1-k)*a/k))
-            y = R*((1-k)*math.sin(a) - l*k*math.sin((1-k)*a/k))
+            x = R*((1-k)*math.cos(a) + L*k*math.cos((1-k)*a/k))
+            y = R*((1-k)*math.sin(a) - L*k*math.sin((1-k)*a/k))
             self.t.setpos(self.xc + x, self.yc + y)
         # drawing is done so hide the turtle cursor
         self.t.hideturtle()
@@ -100,12 +100,12 @@ class Spiro:
         self.a += self.step
 
         # draw a step
-        R, k, l = self.R, self.k, self.l
+        R, k, L = self.R, self.k, self.L
 
         # set angle
         a = math.radians(self.a)
-        x = self.R*((1-k)*math.cos(a) + l*k*math.cos((1-k)*a/k))
-        y = self.R*((1-k)*math.sin(a) - l*k*math.sin((1-k)*a/k))
+        x = self.R*((1-k)*math.cos(a) + L*k*math.cos((1-k)*a/k))
+        y = self.R*((1-k)*math.sin(a) - L*k*math.sin((1-k)*a/k))
         self.t.setpos(self.xc + x, self.yc + y)
 
         # if drawing is complete, set the flag
@@ -166,14 +166,14 @@ class SpiroAnimator:
         width, height = self.width, self.height
         R = random.randint(50, min(width, height)//2)
         r = random.randint(10, 9*R//10)
-        l = random.uniform(0.1, 0.9)
+        L = random.uniform(0.1, 0.9)
         xc = random.randint(-width//2, width//2)
         yc = random.randint(-height//2, height//2)
         col = (random.random(),
                random.random(),
                random.random()
                )
-        return(xc, yc, col, R, r, l)
+        return(xc, yc, col, R, r, L)
 
     # update method
     def update(self):
@@ -241,14 +241,14 @@ def main():
 
     R: radius of outer circle
     r: radius of inner circle
-    i: ratio of hole distance to r
+    L: ratio of hole distance to r
     """
 
     parser = argparse.ArgumentParser(description=descStr)
 
     # add expected arguments
     parser.add_argument('--sparams', nargs=3, dest='sparams', required=False,
-                        help="The three arguments in sparms: R, r, l.")
+                        help="The three arguments in sparms: R, r, L")
 
     # parse args
     args = parser.parse_args()
