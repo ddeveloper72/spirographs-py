@@ -13,7 +13,7 @@ The origin or centre point of the circle is 0, the pen travels 360deg around thi
 
 If we specify a an origin point of (x=0, y=0), then place the imaginary pen nib at (x+r, y) we create a dot on the radius of the un-drawn circle.  The function below then calculates the new (x,y) values, then creates a new dot that is 5 radians away from the last dot, then repeats.
 
-The range below is similar to a css rotation animation, that starts and 0deg, finishes at 365deg and rotates in increments of 5 radians.
+The range below is similar to a css rotation animation, that starts at 0deg, finishes at 360deg and rotates in increments of 5 radians, 365 times.
 
 ```` python
 
@@ -32,7 +32,34 @@ Image showing Draw Circle output:
 
 ## Draw Spirographs
 
-Descriptive text to be updated here
+Spirographs can be drawn by considering the equation for a circle with a radius of *r*, then calculating the (x,y) coordinates for the plot line around the origin.
+
+Consider the following:
+An X Y axis has an angle of 90deg between them.  Its a perfect right angle.
+
+But now somewhere between, the X and Y axis, we place a dot.  Then rule a line from the origin of the X Y axis, to our dot.  Call the origin 0
+
+Now if we measure the angle between our line and the X axis, we call this angle ϴ, its units are in degrees or some may call it radians.
+
+The formula for a circle is x^2 + y^2 = r^2
+
+This formula can be refactored below, to solve for x and y, which is our real interest- because we want to know where to place our pen; the dot, the (x,y) coordinate to begin drawing.
+
+y = r cos(ϴ)
+x = r sin(ϴ)
+
+Ok, so we have a dot.  But how does one draw a a circle, comprised of multiple dots, all 5 radians apart? So... what if the 1st dot is on the X-axis.  That means Y is 0 and the angle, ϴ is also 0 degrees and x is some value bigger than 0  so pick 5, then the coordinate is (5,0).  This is handy, because 5 is the number of r, the radius as well.
+The next coordinate depends on two constants.  The new value for ϴ and the constant for *r*.  With these two knowns, we can solve for the unknown, x and y.  See the pattern?  When we use python to do the math, it uses a tool called Turtle to act as the pen on paper.  In Turn, as the math is done from within the structure of a function, Turtle animates the drawing process- like a stop motion animation. Calculate dot, draw dot, calculate next dot, draw dot.  You and I see the magic of a beautiful curve, the result of loads and loads of mathematical computations to determine the values of (x,y).
+
+So now we know how to draw a circle.  But this isn't a spirograph right.  A spirograph is a circle within a circle, where the inside circle rotates like a wheel, inside the larger circle.  
+What? Hey?
+The smaller circle roles around the inside for the bigger circle.  So as it roles, its outside edge follows the path of the inside edge of the larger circle.  Again we can calculate the (x,y) dots of the smaller circle, as they rotate their way around the the circumference of the larger circle.
+
+So ok, what is it that is important we know?
+For a start, the smaller circle as to have a centre.  Then the radius *r* from the centre of the smaller circle, can't extend beyond the radius *R* of the bigger circle.  If it did, it's not going to appear like the little circle rolling around the inside of the bigger circle, when we begin to animate all our dots together right.  
+
+mmm.. so what we are doing is calculating the centre of the smaller circle, but we don't plot a dot at this point.  Instead, this (x,Y) coordinate is the centre of the smaller circle, from were we can calculate another (x,y) coordinate where we can actually plot a dot.  This (x,y) coordinate has its own origin and there for to rotate, has its own angle ϴ, that rotates 360 degrees   This is how we draw a circle within a circle.  So when we plot the next dot, showing the rotation of the smaller circle within the larger one, we start by incrementing the ϴ by 5deg in both circles, which means we get a new centre for the smaller circle which itself has rotated another ϴ.  We repeat the process of calculating the new (x,y) coordinates each time, and turtle animates the data to create beautiful curves representing this data in a more meaningfully way.
+
 
 ```` python
 
