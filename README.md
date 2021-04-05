@@ -34,7 +34,7 @@ Image showing Draw Circle output:
 
 Spirographs can be drawn by considering the equation for a circle with a radius of *r*, then calculating the (x,y) coordinates for the plot line around the origin.
 
-![Image showing spirograph](https://github.com/ddeveloper72/spirographs-py/blob/main/images/sample.png "Image showing Spirograph")
+![Image showing spirograph](https://github.com/ddeveloper72/spirographs-py/blob/main/images/spiro-sample.png "Image showing Spirograph")
 
 Consider the following:
 An X Y axis has an angle of 90deg between them.  Its a perfect right angle.
