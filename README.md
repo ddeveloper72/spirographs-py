@@ -45,12 +45,14 @@ Now if we measure the angle between our line and the X axis, we call this angle 
 
 The formula for a circle is:
 
-### $x^2$ + $y^2$ = $r^2$
+
+![Function of a circle](https://latex.codecogs.com/png.latex?\dpi{400}x^2+y^2=r^2 "Function of a circle")
 
 This formula can be refactored below, to solve for x and y, which is our real interest- because we want to know where to place our pen; the dot, the (x,y) coordinate to begin drawing.
 
-### y = *r* $\cos$($\theta$)
-### x = *r* $\sin$($\theta$)
+![Solve for x](https://latex.codecogs.com/png.latex?\dpi{400}y=rcos(\theta)) 
+
+![Solve for y](https://latex.codecogs.com/png.latex?\dpi{400}x=rsin(\theta))
 
 
 
@@ -67,20 +69,21 @@ For a start, the smaller circle as to have a centre.  Then the radius *r* from t
 mmm.. so what we are doing is calculating the centre of the smaller circle, but we don't plot a dot at this point.  Instead, this (x,y) coordinate is the centre of the smaller circle, from were we can calculate another (x,y) coordinate where we can actually plot a dot.  The ratio between the radii of the two circles can be expressed as *k*
 
 This is:
-### *k* = $\frac{r}{R}$
+
+![Finding k](https://latex.codecogs.com/png.latex?\dpi{400}k=\frac{r}{R} "Function of a circle")
 
 
 This new (x,y) coordinate has its own origin and there has its own angle ϴ, that rotates 360 degrees.  We can call the origin of the smaller circle C.   The next step in our design, is to find the spot were we can place the pend tip within the radius of the smaller circle.  Call tis location P.  Here we use another function to determine the distance the pen tip from P.  the distance is called l.  In the code we use L, because l looks too much like 1 and can result in unexpected outcomes.
-### l = $\frac{PC}{r}$
+
+![Finding l](https://latex.codecogs.com/png.latex?\dpi{400}l=\frac{PC}{r})
 
 
 When these variables are combined, the motion of P can be calculated to solve for (x,y)
 
 
-### *x* = R$($(1 - k)$\cos$($\theta$) + Lk $\cos$$($$\frac{1-k}{k}$$\theta$$)$$)$
+![Solving for x](https://latex.codecogs.com/png.latex?\dpi{400}x=R((1-k)\cos(\theta)+Lk\cos(\frac{1-k}{k}\theta))) 
 
-### *y* = R$($(1 - k)$\cos$($\theta$) + Lk $\sin$$($$\frac{1-k}{k}$$\theta$$)$$)$
-
+![Solving for y](https://latex.codecogs.com/png.latex?\dpi{400}y=R((1-k)\cos(\theta)+Lk\sin(\frac{1-k}{k}\theta)))
 
 This is how we draw a circle within a circle.  So when we plot the next dot, showing the rotation of the smaller circle within the larger one, we start by incrementing the ϴ by 5deg in both circles, which means we get a new centre for the smaller circle which itself has rotated another ϴ.  We repeat the process of calculating the new (x,y) coordinates each time, and turtle animates the data to create beautiful curves representing this data in a more meaningfully way.
 
