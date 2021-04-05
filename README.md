@@ -39,9 +39,9 @@ Spirographs can be drawn by considering the equation for a circle with a radius 
 Consider the following:
 An X Y axis has an angle of 90deg between them.  Its a perfect right angle.
 
-But now somewhere between, the X and Y axis, we place a dot.  Then rule a line from the origin of the X Y axis, to our dot.  Call the origin $\theta$
+But now somewhere between, the X and Y axis, we place a dot.  Then rule a line from the origin of the X Y axis, to our dot.  Call the origin &#920;
 
-Now if we measure the angle between our line and the X axis, we call this angle $\theta$, its units are in degrees or some may call it radians.
+Now if we measure the angle between our line and the X axis, we call this angle &#920; its units are in degrees or some may call it radians.
 
 The formula for a circle is:
 
@@ -56,8 +56,8 @@ This formula can be refactored below, to solve for x and y, which is our real in
 
 
 
-Ok, so we have a dot.  But how does one draw a a circle, comprised of multiple dots, all 5 radians apart? So... what if the 1st dot is on the X-axis.  That means Y is 0 and the angle, $\theta$ is also 0 degrees and x is some value bigger than 0  so pick 5, then the coordinate is (5,0).  This is handy, because 5 is the number of r, the radius as well.
-The next coordinate depends on two constants.  The new value for $\theta$ and the constant for *r*.  With these two knowns, we can solve for the unknown, x and y.  See the pattern?  When we use python to do the math, it uses a tool called Turtle to act as the pen on paper.  In Turn, as the math is done from within the structure of a function, Turtle animates the drawing process- like a stop motion animation. Calculate dot, draw dot, calculate next dot, draw dot.  You and I see the magic of a beautiful curve, the result of loads and loads of mathematical computations to determine the values of (x,y).
+Ok, so we have a dot.  But how does one draw a a circle, comprised of multiple dots, all 5 radians apart? So... what if the 1st dot is on the X-axis.  That means Y is 0 and the angle, &#920; is also 0 degrees and x is some value bigger than 0  so pick 5, then the coordinate is (5,0).  This is handy, because 5 is the number of r, the radius as well.
+The next coordinate depends on two constants.  The new value for &#920; and the constant for *r*.  With these two knowns, we can solve for the unknown, x and y.  See the pattern?  When we use python to do the math, it uses a tool called Turtle to act as the pen on paper.  In Turn, as the math is done from within the structure of a function, Turtle animates the drawing process- like a stop motion animation. Calculate dot, draw dot, calculate next dot, draw dot.  You and I see the magic of a beautiful curve, the result of loads and loads of mathematical computations to determine the values of (x,y).
 
 So now we know how to draw a circle.  But this isn't a spirograph right.  A spirograph is a circle within a circle, where the inside circle rotates like a wheel, inside the larger circle.  
 What? Hey?
@@ -73,7 +73,7 @@ This is:
 ![Finding k](https://latex.codecogs.com/png.latex?\dpi{400}k=\frac{r}{R} "Function of a circle")
 
 
-This new (x,y) coordinate has its own origin and there has its own angle ϴ, that rotates 360 degrees.  We can call the origin of the smaller circle C.   The next step in our design, is to find the spot were we can place the pend tip within the radius of the smaller circle.  Call tis location P.  Here we use another function to determine the distance the pen tip from P.  the distance is called l.  In the code we use L, because l looks too much like 1 and can result in unexpected outcomes.
+This new (x,y) coordinate has its own origin and there has its own angle &#920; that rotates 360 degrees.  We can call the origin of the smaller circle C.   The next step in our design, is to find the spot were we can place the pend tip within the radius of the smaller circle.  Call tis location P.  Here we use another function to determine the distance the pen tip from P.  the distance is called l.  In the code we use L, because l looks too much like 1 and can result in unexpected outcomes.
 
 ![Finding l](https://latex.codecogs.com/png.latex?\dpi{400}l=\frac{PC}{r})
 
@@ -88,7 +88,7 @@ When these variables are combined, the motion of P can be calculated to solve fo
 This is how we draw a circle within a circle.  So when we plot the next dot, showing the rotation of the smaller circle within the larger one, we start by incrementing the ϴ by 5deg in both circles, which means we get a new centre for the smaller circle which itself has rotated another ϴ.  We repeat the process of calculating the new (x,y) coordinates each time, and turtle animates the data to create beautiful curves representing this data in a more meaningfully way.
 
 
-Using python, $\theta$ is represent by a for angle or radii
+Using python, &#920; is represent by a for angle or radii
 
 ```` python
 
