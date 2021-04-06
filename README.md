@@ -61,20 +61,21 @@ Ok, so we have a dot.  But how does one draw a a circle, comprised of multiple d
 The next coordinate depends on two constants.  The new value for &#920; and the constant for *r*.  With these two knowns, we can solve for the unknown, x and y.  See the pattern?  When we use python to do the math, it uses a tool called Turtle to act as the pen on paper.  In Turn, as the math is done from within the structure of a function, Turtle animates the drawing process- like a stop motion animation. Calculate dot, draw dot, calculate next dot, draw dot.  You and I see the magic of a beautiful curve, the result of loads and loads of mathematical computations to determine the values of (x,y).
 
 So now we know how to draw a circle.  But this isn't a spirograph right.  A spirograph is a circle within a circle, where the inside circle rotates like a wheel, inside the larger circle.  
-What? Hey?
-The smaller circle roles around the inside for the bigger circle.  So as it roles, its outside edge follows the path of the inside edge of the larger circle.  Again we can calculate the (x,y) dots of the smaller circle, as they rotate their way around the the circumference of the larger circle.
 
-So ok, what is it that is important we know?
-For a start, the smaller circle as to have a centre.  Then the radius *r* from the centre of the smaller circle, can't extend beyond the radius *R* of the bigger circle.  If it did, it's not going to appear like the little circle rolling around the inside of the bigger circle, when we begin to animate all our dots together right.  
+What? Hey?  The smaller circle roles around the inside for the bigger circle.  So as it roles, its outside edge follows the path of the inside edge of the larger circle.  Again we can calculate the (x,y) dots of the smaller circle, as they rotate their way around the the circumference of the larger circle.
+
+So ok, what is it that is important, that we know?
+
+For a start, the smaller circle has to have a centre.  Then the radius *r* from the centre of the smaller circle, can't extend beyond the radius *R* of the bigger circle.  If it did, it's not going to appear like the little circle rolling around the inside of the bigger circle, when we begin to animate all our dots together right.  
 
 mmm.. so what we are doing is calculating the centre of the smaller circle, but we don't plot a dot at this point.  Instead, this (x,y) coordinate is the centre of the smaller circle, from were we can calculate another (x,y) coordinate where we can actually plot a dot.  The ratio between the radii of the two circles can be expressed as *k*
 
-This is:
+**k** can be represented as:
 
-![Finding k](https://latex.codecogs.com/png.latex?\dpi{400}k=\frac{r}{R} "Function of a circle")
+![Finding k](https://latex.codecogs.com/png.latex?\dpi{400}k=\frac{r}{R} "Ratio between the radii of the two circles")
 
 
-This new (x,y) coordinate has its own origin and there has its own angle &#920; that rotates 360 degrees.  We can call the origin of the smaller circle C.   The next step in our design, is to find the spot were we can place the pend tip within the radius of the smaller circle.  Call tis location P.  Here we use another function to determine the distance the pen tip from P.  the distance is called l.  In the code we use L, because l looks too much like 1 and can result in unexpected outcomes.
+This new (x,y) coordinate has its own origin and there has its own angle &#920; that rotates 360 degrees.  We can call the origin of the smaller circle C.   The next step in our design, is to find the spot were we can place the pend tip within the radius of the smaller circle.  Call tis location P.  Here we use another function to determine the distance the pen tip from P.  The distance is called **l**.  In the code we use **L**, because l looks too much like 1 and can result in unexpected outcomes as well as an ambiguity error for l in our code editor.
 
 ![Finding l](https://latex.codecogs.com/png.latex?\dpi{400}l=\frac{PC}{r})
 
