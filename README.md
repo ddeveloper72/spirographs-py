@@ -32,16 +32,17 @@ Image showing Draw Circle output:
 
 ## Draw Spirographs
 
+<img src="https://github.com/ddeveloper72/spirographs-py/raw/main/images/spiro-sample.png" alt="Image showing spirograph" title="Image showing Spirograph" style="max-width:60%; height: auto;">
+
 Spirographs can be drawn by considering the equation for a circle with a radius of *r*, then calculating the (x,y) coordinates for the plot line around the origin.
 
-![Image showing spirograph](https://github.com/ddeveloper72/spirographs-py/blob/main/images/spiro-sample.png "Image showing Spirograph")
 
 Consider the following:
 An X Y axis has an angle of 90deg between them.  Its a perfect right angle.
 
-But now somewhere between, the X and Y axis, we place a dot.  Then rule a line from the origin of the X Y axis, to our dot.  Call the origin &#920;
+But now somewhere between, the X and Y axis, we place a dot.  Then rule a line from the origin of the X Y axis, to our dot.  Call the origin 0.
 
-Now if we measure the angle between our line and the X axis, we call this angle &#920; its units are in degrees or some may call it radians.
+Now if we measure the angle between our line and the X axis, we call this angle Theta, or use the Greek symbol, &#920; its units are in degrees or some may call it radians.
 
 The formula for a circle is:
 
