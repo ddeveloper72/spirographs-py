@@ -32,7 +32,7 @@ Image showing Draw Circle output:
 
 ## Draw Spirographs
 
-<img src="https://github.com/ddeveloper72/spirographs-py/raw/main/images/spiro-sample.png" alt="Image showing spirograph" title="Image showing Spirograph" style="width:60%; height:auto;">
+<img src="https://github.com/ddeveloper72/spirographs-py/raw/main/images/spiro-sample.png" alt="Image showing spirograph" title="Image showing Spirograph" style="max-width:40%;">
 
 Spirographs can be drawn by considering the equation for a circle with a radius of *r*, then calculating the (x,y) coordinates for the plot line around the origin.
 
