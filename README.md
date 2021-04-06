@@ -68,14 +68,14 @@ So ok, what is it that is important, that we know?
 
 For a start, the smaller circle has to have a centre.  Then the radius *r* from the centre of the smaller circle, can't extend beyond the radius *R* of the bigger circle.  If it did, it's not going to appear like the little circle rolling around the inside of the bigger circle, when we begin to animate all our dots together right.  
 
-mmm.. so what we are doing is calculating the centre of the smaller circle, but we don't plot a dot at this point.  Instead, this (x,y) coordinate is the centre of the smaller circle, from were we can calculate another (x,y) coordinate where we can actually plot a dot.  The ratio between the radii of the two circles can be expressed as *k*
+mmm.. so what we are doing is calculating the centre of the smaller circle, but we don't plot a dot at this point.  Instead, this (x,y) coordinate is the centre of the smaller circle, from were we can calculate another (x,y) coordinate where we can actually plot a dot.  The ratio between the radii of the two circles can be expressed as **k**
 
 **k** can be represented as:
 
 ![Finding k](https://latex.codecogs.com/png.latex?\dpi{400}k=\frac{r}{R} "Ratio between the radii of the two circles")
 
 
-This new (x,y) coordinate has its own origin and there has its own angle &#920; that rotates 360 degrees.  We can call the origin of the smaller circle C.   The next step in our design, is to find the spot were we can place the pend tip within the radius of the smaller circle.  Call tis location P.  Here we use another function to determine the distance the pen tip from P.  The distance is called **l**.  In the code we use **L**, because l looks too much like 1 and can result in unexpected outcomes as well as an ambiguity error for l in our code editor.
+This new (x,y) coordinate has its own origin and there has its own angle &#920; that rotates 360 degrees.  We can call the origin of the smaller circle **C**.   The next step in our design, is to find the spot were we can place the pend tip within the radius of the smaller circle.  Call tis location **P**.  Here we use another function to determine the distance the pen tip from **P**.  The distance is called **l**.  In the code we use **L**, because l looks too much like 1 and can result in unexpected outcomes as well as an ambiguity error for l in our code editor.
 
 ![Finding l](https://latex.codecogs.com/png.latex?\dpi{400}l=\frac{PC}{r})
 
@@ -104,3 +104,26 @@ for i in range(0, 360*self.nRot + 1, self.step):
 Image showing the Spirograph output:
 
 ![Image showing Spirographs](https://github.com/ddeveloper72/spirographs-py/blob/main/images/spiro-28Mar2021-234220.png "Image showing Turtle Spirographs")
+
+## Deployment
+
+If you would like to play experiment with circles as well as Spirographs, feel free to fork this mini-project.  The code source is noted at the start of this README document & I hope that you will enjoy using it as much as I have.  All credits to the original author.
+
+When coding this project, I did so from within a virtual environment, so as to confine all the application dependencies to a python virtual container.
+
+CMD Command:
+`python -m venv .venv`
+
+You may then install the application dependencies:
+`pip install -r requirements.txt`
+
+This application lets you save your spirographs to a PNG file within the application folder.  Since the application when running, is on the safe side of the virtual environment, I also had to install [Ghostscript](https://www.ghostscript.com/index.html) a Postscript and PDF interpreter/renderer, which (Thanks to users that had the same problem as me, that had responded to questions on stackOverflow) permits the python application to find and use a filename path from within your .VENV  If using GhostScript don't forget that you have to add the binary file location to your Windows system environmental variables, PATH; or else it won't work.  Your PC system has to be configured to make GhostScript accessible to your python application from within your code editor.
+
+Once done, you can run the application:
+
+`python drawcircle.py` simply draws as circle.  You can change the hardcoded parameters yourself.
+`python spiro.py --sparams 220 65 08`  will generate a single Spirogram, by specifying the parameters for R r l
+`python spiro.py` will generate 4 Spirograms, from random parameters for R r l
+
+If you find that they application doesn't work, then welcome to the fun stuff!  Debugging is often the best part of development!
+I hope that you enjoy the magic of this application as much as I have.
