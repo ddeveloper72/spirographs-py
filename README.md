@@ -128,6 +128,11 @@ Once done, you can run the application:
 
     `python spiro.py` 
     The application will generate 4 Spirograms, from random parameters for R r l
+### Keyboard Controls
+
+    t - Show / hide turtle
+    s - save drawing
+    spcebar - restart Spiro
 
 If you find that they application doesn't work, then welcome to the fun stuff!  Debugging is often the best part of development!
 I hope that you enjoy the magic of this application as much as I have.
