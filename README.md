@@ -121,9 +121,13 @@ This application lets you save your spirographs to a PNG file within the applica
 
 Once done, you can run the application:
 
-`python drawcircle.py` simply draws as circle.  You can change the hardcoded parameters yourself.
-`python spiro.py --sparams 220 65 08`  will generate a single Spirogram, by specifying the parameters for R r l
-`python spiro.py` will generate 4 Spirograms, from random parameters for R r l
+    `python drawcircle.py` simply draws as circle.  You can change the hardcoded parameters yourself.
+
+    `python spiro.py --sparams 220 65 08`  
+    The application will generate a single Spirogram, by specifying the parameters for R r l
+
+    `python spiro.py` 
+    The application will generate 4 Spirograms, from random parameters for R r l
 
 If you find that they application doesn't work, then welcome to the fun stuff!  Debugging is often the best part of development!
 I hope that you enjoy the magic of this application as much as I have.
